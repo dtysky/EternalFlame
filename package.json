@@ -1,0 +1,49 @@
+{
+  "name": "GGJ2018",
+  "version": "1.0.0",
+  "description": "I'm the god of magic, here is my spellbook.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node server.dev.js",
+    "build": "./node_modules/.bin/webpack -p --config webpack.build.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dtysky/GGJ2018.git"
+  },
+  "author": "Tianyu Dai (dtysky)<dtysky@outlook.com>",
+  "bugs": {
+    "url": "https://github.com/dtysky/GGJ2018/issues"
+  },
+  "homepage": "",
+  "devDependencies": {
+    "@types/node": "^7.0.46",
+    "awesome-typescript-loader": "^3.4.1",
+    "clean-webpack-plugin": "^0.1.16",
+    "copy-webpack-plugin": "^4.0.1",
+    "expose-loader": "^0.7.4",
+    "express": "4.14.0",
+    "html-webpack-plugin": "^2.30.1",
+    "ignore-loader": "^0.1.2",
+    "raw-loader": "^0.5.1",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "source-map-loader": "^0.2.0",
+    "source-map-support": "^0.5.0",
+    "tslint": "4.1.1",
+    "tslint-loader": "^3.3.0",
+    "typescript": "^2.6.2",
+    "url-loader": "^0.5.7",
+    "webpack": "^3.2.1",
+    "webpack-dev-middleware": "^1.9.0",
+    "webpack-hot-middleware": "^2.17.1"
+  },
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/classnames": "^2.2.3",
+    "axios": "^0.17.0",
+    "jsonp": "^0.2.1",
+    "phaser-ce": "^2.9.3",
+    "querystring": "^0.2.0",
+    "rxjs": "^5.5.2"
+  }
+}
