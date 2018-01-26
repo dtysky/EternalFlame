@@ -1,7 +1,7 @@
 {
-  "name": "GGJ2018",
+  "name": "EternalFlame",
   "version": "1.0.0",
-  "description": "I'm the god of magic, here is my spellbook.",
+  "description": "Eternal flame.",
   "main": "main.js",
   "scripts": {
     "dev": "node server.dev.js",
@@ -9,11 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dtysky/GGJ2018.git"
+    "url": "https://github.com/dtysky/EternalFlame.git"
   },
   "author": "Tianyu Dai (dtysky)<dtysky@outlook.com>",
   "bugs": {
-    "url": "https://github.com/dtysky/GGJ2018/issues"
+    "url": "https://github.com/dtysky/EternalFlame/issues"
   },
   "homepage": "",
   "devDependencies": {

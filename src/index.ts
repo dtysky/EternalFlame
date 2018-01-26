@@ -4,27 +4,20 @@
  * Description:
  */
 import * as Phaser from 'phaser-ce';
+import config from './config';
+import Game from './Game';
+import {init, preload} from './states';
 
 class SimpleGame {
-  private game: Phaser.Game;
+  private game: Game;
 
   constructor() {
-    this.game = new Phaser.Game(800, 600, Phaser.AUTO, 'content', {
-      preload: this.preload,
-      create: this.create
-    });
+    this.game = new Game(config.width, config.height, Phaser.AUTO, 'content');
+    this.game.state.add('init', init);
+    this.game.state.add('preload', preload);
+
+    this.game.state.start('init');
   }
-
-  private preload() {
-    this.game.load.image('logo', '/assets/o.png');
-  }
-
-  private create() {
-    const logo = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'logo');
-
-    logo.anchor.setTo(0.5, 0.5);
-  }
-
 }
 
 window.onload = () => {
