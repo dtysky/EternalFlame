@@ -26,7 +26,9 @@ export type TMapElement = {
   type: 'torch' | 'water' | 'wall',
   x: number,
   y: number,
-  width: number
+  width: number,
+  xNum?: number,
+  yNum?: number
 };
 
 export type TGameSetting = {

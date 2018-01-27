@@ -14,6 +14,9 @@ export default class Water extends Phaser.Sprite {
     super(game, x, y, 'water');
     this.scale.x = this.scale.y = width / this.width;
 
+    this.animations.add('flow', ['1', '2', '3', '4', '5', '6'], 6, true);
+    this.animations.play('flow');
+
     this.game.physics.arcade.enable([this]);
     this.body.collideWorldBounds = true;
     this.body.bounce.set(1);

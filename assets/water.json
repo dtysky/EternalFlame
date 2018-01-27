@@ -1,0 +1,35 @@
+{
+"frames": {
+	"1": {
+		"frame": {"x":0, "y":221, "w":102, "h":102},
+		"spriteSourceSize": {"x":0,"y":0,"w":102,"h":102},
+		"sourceSize": {"w":102,"h":102}
+	},
+	"2": {
+		"frame": {"x":110, "y":0, "w":102, "h":102},
+		"spriteSourceSize": {"x":0,"y":0,"w":102,"h":102},
+		"sourceSize": {"w":102,"h":102}
+	},
+	"3": {
+		"frame": {"x":110, "y":110, "w":102, "h":102},
+		"spriteSourceSize": {"x":0,"y":0,"w":102,"h":102},
+		"sourceSize": {"w":102,"h":102}
+	},
+	"4": {
+		"frame": {"x":0, "y":110, "w":102, "h":102},
+		"spriteSourceSize": {"x":0,"y":0,"w":102,"h":102},
+		"sourceSize": {"w":102,"h":102}
+	},
+	"5": {
+		"frame": {"x":0, "y":0, "w":102, "h":102},
+		"spriteSourceSize": {"x":0,"y":0,"w":102,"h":102},
+		"sourceSize": {"w":102,"h":102}
+	}
+
+},
+"meta": {
+	"image": "water.png",
+	"size": {"w": 221, "h": 331},
+	"scale": "1"
+}
+}

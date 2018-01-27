@@ -1,0 +1,40 @@
+{
+"frames": {
+	"1": {
+		"frame": {"x":207, "y":0, "w":199, "h":250},
+		"spriteSourceSize": {"x":0,"y":0,"w":199,"h":250},
+		"sourceSize": {"w":199,"h":250}
+	},
+	"2": {
+		"frame": {"x":414, "y":0, "w":199, "h":250},
+		"spriteSourceSize": {"x":0,"y":0,"w":199,"h":250},
+		"sourceSize": {"w":199,"h":250}
+	},
+	"3": {
+		"frame": {"x":207, "y":258, "w":199, "h":250},
+		"spriteSourceSize": {"x":0,"y":0,"w":199,"h":250},
+		"sourceSize": {"w":199,"h":250}
+	},
+	"4": {
+		"frame": {"x":414, "y":258, "w":199, "h":250},
+		"spriteSourceSize": {"x":0,"y":0,"w":199,"h":250},
+		"sourceSize": {"w":199,"h":250}
+	},
+	"5": {
+		"frame": {"x":0, "y":258, "w":199, "h":250},
+		"spriteSourceSize": {"x":0,"y":0,"w":199,"h":250},
+		"sourceSize": {"w":199,"h":250}
+	},
+	"6": {
+		"frame": {"x":0, "y":0, "w":199, "h":250},
+		"spriteSourceSize": {"x":0,"y":0,"w":199,"h":250},
+		"sourceSize": {"w":199,"h":250}
+	}
+
+},
+"meta": {
+	"image": "torch-flame.png",
+	"size": {"w": 621, "h": 516},
+	"scale": "1"
+}
+}

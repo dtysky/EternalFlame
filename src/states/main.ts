@@ -9,6 +9,20 @@ import Flame from '../components/Flame';
 import Torch from '../components/Torch';
 import Water from '../components/Water';
 import Wall from '../components/Wall';
+import {TMapElement} from '../types';
+
+function measureHeight(game: Game, type: TMapElement['type'], width: number) {
+  switch (type) {
+    case 'torch':
+      return (new Torch(game, 0, 0, width)).height;
+    case 'water':
+      return (new Water(game, 0, 0, width)).height;
+    case 'wall':
+      return (new Wall(game, 0, 0, width)).height;
+    default:
+      return 0;
+  }
+}
 
 export default class Main extends Phaser.State {
   public game: Game;
@@ -30,14 +44,14 @@ export default class Main extends Phaser.State {
 
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
     this.cursors = this.game.input.keyboard.createCursorKeys();
-  
-    // for (let i = 0; i < 50; i++) {
-    //   this.torches.push(this.game.add.existing(new Torch(
-    //     this.game,
-    //     this.game.world.randomX,
-    //     this.game.world.randomY,
-    //     100
-    //   )));
+
+    for (let i = 0; i < 50; i++) {
+      // this.torches.push(this.game.add.existing(new Torch(
+      //   this.game,
+      //   this.game.world.randomX,
+      //   this.game.world.randomY,
+      //   100
+      // )));
       // this.waters.push(this.game.add.existing(new Water(
       //   this.game,
       //   this.game.world.randomX,
@@ -50,20 +64,33 @@ export default class Main extends Phaser.State {
       //   this.game.world.randomY,
       //   100
       // )));
-    // }
-    setting.mapElements.forEach(({type, x, y, width}) => {
-      switch (type) {
-        case 'torch':
-          this.torches.push(this.game.add.existing(new Torch(this.game, x, y, width)));
-          break;
-        case 'water':
-          this.torches.push(this.game.add.existing(new Water(this.game, x, y, width)));
-          break;
-        case 'wall':
-          this.torches.push(this.game.add.existing(new Wall(this.game, x, y, width)));
-          break;
-        default:
-          break;
+    }
+    setting.mapElements.forEach(({type, x: sx, y: sy, width, xNum, yNum}) => {
+      xNum = xNum || 1;
+      yNum = yNum || 1;
+      const height = measureHeight(this.game, type, width);
+
+      for (let j = 0; j < yNum; j += 1) {
+        const y = sy + j * height;
+        for (let i = 0; i < xNum; i += 1) {
+          const x = sx + i * width;
+          switch (type) {
+            case 'torch': {
+              this.torches.push(this.game.add.existing(new Torch(this.game, x, y, width)));
+              break;
+            }
+            case 'water': {
+              this.waters.push(this.game.add.existing(new Water(this.game, x, y, width)));
+              break;
+            }
+            case 'wall': {
+              this.walls.push(this.game.add.existing(new Wall(this.game, x, y, width)));
+              break;
+            }
+            default:
+              break;
+          }
+        }
       }
     });
 
@@ -125,6 +152,16 @@ export default class Main extends Phaser.State {
 
   public render() {
     this.game.debug.cameraInfo(this.game.camera, 32, 32);
+    this.game.debug.body(this.flame);
+    this.torches.forEach(torch => {
+      this.game.debug.body(torch);
+    });
+    this.waters.forEach(water => {
+      this.game.debug.body(water);
+    });
+    this.walls.forEach(wall => {
+      this.game.debug.body(wall);
+    });
   }
 
   public shutdown() {

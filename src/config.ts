@@ -18,7 +18,7 @@ export const resources: TResources = {
   main: [
     {type: 'image', key: 'start-game', url: 'start-game.png'},
     {type: 'image', key: 'torch', url: 'torch.png'},
-    {type: 'image', key: 'water', url: 'water.png'},
-    {type: 'image', key: 'wall', url: 'wall.png'}
+    {type: 'atlas', key: 'water', url: 'water.png', tUrl: 'water.json'},
+    {type: 'atlas', key: 'torch-flame', url: 'torch-flame.png', tUrl: 'torch-flame.json'}
   ]
 };
