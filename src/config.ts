@@ -3,7 +3,7 @@
  * Created: 26 Jan 2018
  * Description:
  */
-import {TResources} from './types';
+import {TResources, TMapElement} from './types';
 
 export default {
   assetsBasePath: '/assets/',
@@ -19,6 +19,6 @@ export const resources: TResources = {
     {type: 'image', key: 'start-game', url: 'start-game.png'},
     {type: 'image', key: 'torch', url: 'torch.png'},
     {type: 'image', key: 'water', url: 'water.png'},
-    {type: 'image', key: 'o4', url: 'o.png'}
+    {type: 'image', key: 'wall', url: 'wall.png'}
   ]
 };

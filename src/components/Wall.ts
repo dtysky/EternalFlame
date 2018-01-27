@@ -7,11 +7,11 @@ import * as Phaser from 'phaser-ce';
 import Game from '../Game';
 import Flame from './Flame';
 
-export default class Water extends Phaser.Sprite {
+export default class Wall extends Phaser.Sprite {
   public game: Game;
 
   constructor(game: Game, x: number, y: number, width: number) {
-    super(game, x, y, 'water');
+    super(game, x, y, 'wall');
     this.scale.x = this.scale.y = width / this.width;
 
     this.game.physics.arcade.enable([this]);
@@ -19,12 +19,13 @@ export default class Water extends Phaser.Sprite {
     this.body.bounce.set(1);
     this.body.allowGravity = false;
 
-    this.body.onOverlap = new Phaser.Signal();
-    this.body.onOverlap.add(this.onFire);
+    this.body.onCollide = new Phaser.Signal();
+    this.body.onCollide.add(this.onFire);
+    this.body.immovable = true;
   }
 
-  public onFire = (self: Water, target: Flame) => {
-    target.weak(50);
-    console.log('water');
+  public onFire = (self: Wall, target: Flame) => {
+    // target.weak(50);
+    console.log('wall');
   }
 }

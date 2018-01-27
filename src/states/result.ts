@@ -12,6 +12,10 @@ export default class Result extends Phaser.State {
   constructor(game: Game) {
     super();
     this.game = game;
+  }
+
+  public create() {
     console.log('result');
+    this.game.state.start('title');
   }
 }

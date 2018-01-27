@@ -15,16 +15,35 @@ export type TResources = {
   main: TResource[]
 };
 
-export type TVars = {
-  config: {
-    flame: {
-      lifeDuration: number
+export type TGameRecords = {
+  duration: number,
+  fire: number,
+  water: number,
+  result: 'die' | 'alive'
+};
+
+export type TMapElement = {
+  type: 'torch' | 'water' | 'wall',
+  x: number,
+  y: number,
+  width: number
+};
+
+export type TGameSetting = {
+  flame: {
+    lifeDuration: number,
+    maxVelocity: {
+      x: number,
+      y: number
+    },
+    initAcceleration: {
+      x: number,
+      y: number
     }
   },
-  records: {
-    duration: number,
-    fire: number,
-    water: number,
-    result: 'die' | 'alive'
-  }
+  world: {
+    worldWidth: number,
+    worldHeight: number
+  },
+  mapElements: TMapElement[]
 };
