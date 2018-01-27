@@ -5,7 +5,15 @@
  */
 import {TResources, TMapElement} from './types';
 
+declare const globalEnv: {
+  NODE_ENV: string
+};
+const env = globalEnv.NODE_ENV;
+const devMode = env === 'development';
+
 export default {
+  env,
+  devMode,
   assetsBasePath: '/assets/',
   width: 540,
   height: 960
@@ -13,10 +21,13 @@ export default {
 
 export const resources: TResources = {
   loading: [
-    {type: 'atlas', key: 'flame', url: 'flame.png', tUrl: 'flame.json'}
+    {type: 'atlas', key: 'flame', url: 'flame.png', tUrl: 'flame.json'},
+    {type: 'atlas', key: 'ui', url: 'ui.png', tUrl: 'ui.json'}
   ],
   main: [
-    {type: 'image', key: 'start-game', url: 'start-game.png'},
+    {type: 'image', key: 'title-bg', url: 'title-bg.png'},
+    {type: 'image', key: 'camera-mask', url: 'camera-mask.png'},
+    {type: 'image', key: 'bg', url: 'bg.jpg'},
     {type: 'image', key: 'torch', url: 'torch.png'},
     {type: 'atlas', key: 'water', url: 'water.png', tUrl: 'water.json'},
     {type: 'atlas', key: 'torch-flame', url: 'torch-flame.png', tUrl: 'torch-flame.json'}

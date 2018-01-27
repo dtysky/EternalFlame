@@ -24,16 +24,16 @@ export default class Torch extends Phaser.Sprite {
     this.addChild(this.flame);
     this.flame.animations.add('fire', ['1', '2', '3', '4', '5', '6'], 6, true);
 
-    
     this.game.physics.arcade.enable([this]);
     const body = this.body as Phaser.Physics.Arcade.Body;
-    
+
     body.collideWorldBounds = true;
     body.bounce.set(1);
+    body.setSize(this.width * 2 / 3, this.height / 2, this.width / 6);
     body.allowGravity = false;
 
     this.scale.x = this.scale.y = width / this.width;
-    
+
     body.onOverlap = new Phaser.Signal();
     body.onOverlap.add(this.onFire);
   }
@@ -42,6 +42,7 @@ export default class Torch extends Phaser.Sprite {
     if (this.state === 'die') {
       this.state = 'alive';
       target.enhance();
+      this.game.records.fire += 1;
       this.flame.animations.play('fire');
       this.flame.visible = true;
       this.body.onOverlap.remove(this.onFire);

@@ -10,6 +10,7 @@ import Torch from '../components/Torch';
 import Water from '../components/Water';
 import Wall from '../components/Wall';
 import {TMapElement} from '../types';
+import config from '../config';
 
 function measureHeight(game: Game, type: TMapElement['type'], width: number) {
   switch (type) {
@@ -27,10 +28,13 @@ function measureHeight(game: Game, type: TMapElement['type'], width: number) {
 export default class Main extends Phaser.State {
   public game: Game;
   private flame: Flame;
+  private bg: Phaser.Sprite;
   private torches: Torch[] = [];
   private waters: Water[] = [];
   private walls: Wall[] = [];
   private cursors: Phaser.CursorKeys;
+  private cameraMask: Phaser.Sprite;
+  private worldMask: Phaser.Graphics;
 
   constructor(game: Game) {
     super();
@@ -39,6 +43,8 @@ export default class Main extends Phaser.State {
 
   public create() {
     console.log('main');
+    this.bg = this.add.sprite(0, 0, 'bg');
+
     const {setting} = this.game;
     this.game.world.resize(setting.world.worldWidth, setting.world.worldHeight);
 
@@ -46,12 +52,12 @@ export default class Main extends Phaser.State {
     this.cursors = this.game.input.keyboard.createCursorKeys();
 
     for (let i = 0; i < 50; i++) {
-      // this.torches.push(this.game.add.existing(new Torch(
-      //   this.game,
-      //   this.game.world.randomX,
-      //   this.game.world.randomY,
-      //   100
-      // )));
+      this.torches.push(this.game.add.existing(new Torch(
+        this.game,
+        this.game.world.randomX,
+        this.game.world.randomY,
+        100
+      )));
       // this.waters.push(this.game.add.existing(new Water(
       //   this.game,
       //   this.game.world.randomX,
@@ -99,11 +105,20 @@ export default class Main extends Phaser.State {
     this.flame.y = 6000;
 
     this.game.add.existing(this.flame);
-    this.camera.follow(this.flame);
+    this.camera.follow(this.flame, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
     this.flame.init();
+
+    this.cameraMask = this.game.add.sprite(0, 0, 'camera-mask');
+    this.cameraMask.anchor.setTo(.5, .5);
+    this.worldMask = this.game.add.graphics(200, 5600)
+      .beginFill(0xffffff)
+      .drawCircle(0, 0, 480)
+      .endFill();
+    this.world.mask = this.worldMask;
   }
 
   public update() {
+    this.game.records.duration += this.time.elapsedMS;
     this.updateFlame();
     this.updateCollision();
     this.flame.selfWeak();
@@ -136,6 +151,11 @@ export default class Main extends Phaser.State {
     if (body.velocity.y > 0) {
       body.velocity.y = 0;
     }
+
+    this.worldMask.x = flame.centerX;
+    this.worldMask.y = flame.centerY;
+    this.cameraMask.x = this.worldMask.x;
+    this.cameraMask.y = this.worldMask.y;
   }
 
   private updateCollision() {
@@ -151,17 +171,19 @@ export default class Main extends Phaser.State {
   }
 
   public render() {
-    this.game.debug.cameraInfo(this.game.camera, 32, 32);
-    this.game.debug.body(this.flame);
-    this.torches.forEach(torch => {
-      this.game.debug.body(torch);
-    });
-    this.waters.forEach(water => {
-      this.game.debug.body(water);
-    });
-    this.walls.forEach(wall => {
-      this.game.debug.body(wall);
-    });
+    if (config.devMode) {
+      this.game.debug.cameraInfo(this.game.camera, 32, 32);
+      this.game.debug.body(this.flame);
+      this.torches.forEach(torch => {
+        this.game.debug.body(torch);
+      });
+      this.waters.forEach(water => {
+        this.game.debug.body(water);
+      });
+      this.walls.forEach(wall => {
+        this.game.debug.body(wall);
+      });
+    }
   }
 
   public shutdown() {
