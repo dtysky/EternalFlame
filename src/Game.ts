@@ -13,22 +13,20 @@ export default class Game extends Phaser.Game {
   private layers;
 
   public init() {
-    this.vars = {};
-  }
-
-  public addChild() {
-
-  }
-
-  public removeChild() {
-
-  }
-
-  public showLoading() {
-
-  }
-
-  public hideLoading() {
-
+    this.vars = {
+      records: {
+        duration: 0,
+        fire: 0,
+        water: 0,
+        result: 'die'
+      },
+      config: {
+        flame: {
+          lifeDuration: 10
+        }
+      }
+    };
+    this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+    this.scale.forceOrientation(false, true);
   }
 }

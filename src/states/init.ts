@@ -5,17 +5,23 @@
  */
 import * as Phaser from 'phaser-ce';
 import Game from '../Game';
+import config, {resources} from '../config';
+import {loadAssets} from '../utils';
 
-export default class Init {
-  private game: Game;
+export default class Init extends Phaser.State {
+  public game: Game;
 
   constructor(game: Game) {
+    super();
     this.game = game;
-    console.log('init');
-    this.game.init();
   }
 
   public preload() {
+    console.log('init');
+    this.game.load.path = config.assetsBasePath;
+    this.game.init();
+    loadAssets(this.game, resources.loading);
+    this.game.load.start();
   }
 
   public create() {

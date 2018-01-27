@@ -6,10 +6,11 @@
 import * as Phaser from 'phaser-ce';
 import Game from '../Game';
 
-export default class Result {
-  private game: Game;
+export default class Result extends Phaser.State {
+  public game: Game;
 
   constructor(game: Game) {
+    super();
     this.game = game;
     console.log('result');
   }

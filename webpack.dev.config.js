@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 const phaserModule = path.join(__dirname, './node_modules/phaser-ce/');
-const phaser = path.join(phaserModule, 'build/custom/phaser-minimum.js');
+const phaser = path.join(phaserModule, 'build/custom/phaser-split.js');
 const pixi = path.join(phaserModule, 'build/custom/pixi.js');
 const p2 = path.join(phaserModule, 'build/custom/p2.js');
 
@@ -41,7 +41,7 @@ module.exports = {
         use: ['expose-loader?PIXI']
       },
       {
-        test: /phaser-minimum\.js$/,
+        test: /phaser-split\.js$/,
         use: ['expose-loader?Phaser']
       },
       {

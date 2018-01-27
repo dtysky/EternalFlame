@@ -5,25 +5,36 @@
  */
 import * as Phaser from 'phaser-ce';
 import Game from '../Game';
-import config from '../config';
+import config, {resources} from '../config';
+import {loadAssets} from '../utils';
+import Loading from '../components/Loading';
 
-export default class Preload {
-  private game: Game;
+export default class Preload extends Phaser.State {
+  public game: Game;
+  private loading: Loading;
 
   constructor(game: Game) {
+    super();
     this.game = game;
   }
 
   public preload() {
     console.log('preload');
-    this.game.load.path = config.assetsBasePath;
-    this.game.load.image('logo', '/assets/o.png');
+    this.loading = new Loading(this.game);
+    // this.game.stage.addChild(this.loading);
+
+    this.game.load.onFileComplete.add(this.handleLoadProgress);
+    this.game.load.onLoadComplete.addOnce(this.handleLoadComplete);
+    loadAssets(this.game, resources.main);
+    this.game.load.start();
   }
 
-  public create() {
-    const logo = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'logo');
+  private handleLoadProgress = (progress: number, key: string) => {
+    this.loading.update(progress, key);
+  }
 
-    logo.anchor.setTo(0.5, 0.5);
-    // this.game.state.start('title');
+  private handleLoadComplete = () => {
+    this.loading.destroy();
+    this.game.state.start('title');
   }
 }

@@ -10,8 +10,21 @@ export type TResource = {
   type: 'atlas' | 'image' | 'pack' | 'audio'
 };
 
-export type TResources = TResource[][];
+export type TResources = {
+  loading: TResource[],
+  main: TResource[]
+};
 
 export type TVars = {
-  
+  config: {
+    flame: {
+      lifeDuration: number
+    }
+  },
+  records: {
+    duration: number,
+    fire: number,
+    water: number,
+    result: 'die' | 'alive'
+  }
 };
