@@ -89,6 +89,7 @@ export default class Flame extends Phaser.Sprite {
   }
 
   public die() {
+    this.game.records.result = 'die';
     this.game.state.start('result');
   }
 }

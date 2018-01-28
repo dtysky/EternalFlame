@@ -18,7 +18,7 @@ export default class Game extends Phaser.Game {
       duration: 0,
       fire: 0,
       water: 0,
-      result: 'die'
+      result: 'alive'
     };
 
     this.setting = {
@@ -54,7 +54,7 @@ export default class Game extends Phaser.Game {
 
         {type: 'torch', x: 700, y: 300, width: 120, key: 'cross'},
         {type: 'torch', x: 3500, y: 300, width: 120, key: 'cross'},
-        {type: 'torch', x: 3500, y: 3900, width: 120, key: 'cross'},
+        {type: 'torch', x: 3400, y: 3800, width: 120, key: 'cross'},
 
         {type: 'torch', x: 100, y: 600, width: 120},
         {type: 'torch', x: 2000, y: 460, width: 120},

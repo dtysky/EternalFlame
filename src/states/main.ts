@@ -248,7 +248,7 @@ export default class Main extends Phaser.State {
       if (torch.inCamera && torch.state === 'alive') {
         this.worldMask
           .beginFill(0xffffff)
-          .drawCircle(torch.centerX, torch.centerY, 240)
+          .drawCircle(torch.centerX, torch.centerY, 320)
           .endFill();
       }
     });

@@ -19,7 +19,7 @@ export default class Result extends Phaser.State {
   }
 
   public init() {
-    
+
   }
 
   public create() {
@@ -46,6 +46,12 @@ export default class Result extends Phaser.State {
     this.button.width = this.game.width;
     this.button.height = this.game.height / 3;
     this.button.position.setTo(0, this.game.height - this.button.height);
+
+    if (this.game.records.result === 'die') {
+      alert('You dead !')
+    } else {
+      alert('Well, you are the next lord...')
+    }
   }
 
   private handleRestart = () => {
