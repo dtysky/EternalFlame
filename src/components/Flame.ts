@@ -26,6 +26,7 @@ export default class Flame extends Phaser.Sprite {
     const body = this.body as Phaser.Physics.Arcade.Body;
     body.collideWorldBounds = true;
     body.bounce.set(1);
+    body.setSize(this.width / 4, this.height / 4, this.width * 3 / 8, this.height * 3 / 8);
     body.allowGravity = false;
     body.maxVelocity.x = game.setting.flame.maxVelocity.x;
     body.maxVelocity.y = game.setting.flame.maxVelocity.y;

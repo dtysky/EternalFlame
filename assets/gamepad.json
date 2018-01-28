@@ -1,0 +1,50 @@
+{
+"frames": {
+	"off1": {
+		"frame": {"x":284, "y":260, "w":93, "h":152},
+		"spriteSourceSize": {"x":0,"y":0,"w":93,"h":152},
+		"sourceSize": {"w":93,"h":152}
+	},
+	"off2": {
+		"frame": {"x":160, "y":0, "w":152, "h":92},
+		"spriteSourceSize": {"x":0,"y":0,"w":152,"h":92},
+		"sourceSize": {"w":152,"h":92}
+	},
+	"off3": {
+		"frame": {"x":284, "y":100, "w":94, "h":152},
+		"spriteSourceSize": {"x":0,"y":0,"w":94,"h":152},
+		"sourceSize": {"w":94,"h":152}
+	},
+	"off4": {
+		"frame": {"x":0, "y":249, "w":152, "h":92},
+		"spriteSourceSize": {"x":0,"y":0,"w":152,"h":92},
+		"sourceSize": {"w":152,"h":92}
+	},
+	"on1": {
+		"frame": {"x":160, "y":260, "w":116, "h":152},
+		"spriteSourceSize": {"x":0,"y":0,"w":116,"h":152},
+		"sourceSize": {"w":116,"h":152}
+	},
+	"on2": {
+		"frame": {"x":0, "y":124, "w":152, "h":116},
+		"spriteSourceSize": {"x":0,"y":0,"w":152,"h":116},
+		"sourceSize": {"w":152,"h":116}
+	},
+	"on3": {
+		"frame": {"x":160, "y":100, "w":116, "h":152},
+		"spriteSourceSize": {"x":0,"y":0,"w":116,"h":152},
+		"sourceSize": {"w":116,"h":152}
+	},
+	"on4": {
+		"frame": {"x":0, "y":0, "w":152, "h":116},
+		"spriteSourceSize": {"x":0,"y":0,"w":152,"h":116},
+		"sourceSize": {"w":152,"h":116}
+	}
+
+},
+"meta": {
+	"image": "gamepad.png",
+	"size": {"w": 387, "h": 420},
+	"scale": "1"
+}
+}

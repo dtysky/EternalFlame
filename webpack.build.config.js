@@ -17,8 +17,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js',
-    publicPath: '/'
+    filename: '[name].[hash].js',
+    publicPath: 'http://oekm6wrcq.bkt.clouddn.com/eternal-flame'
   },
 
   resolve: {

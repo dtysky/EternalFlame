@@ -29,7 +29,8 @@ export type TMapElement = {
   width: number,
   xNum?: number,
   yNum?: number,
-  key?: string
+  key?: string,
+  height?: number
 };
 
 export type TGameSetting = {

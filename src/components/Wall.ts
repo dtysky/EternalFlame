@@ -11,9 +11,14 @@ import config from '../config';
 export default class Wall extends Phaser.Sprite {
   public game: Game;
 
-  constructor(game: Game, x: number, y: number, width: number, key: string = 'wall') {
+  constructor(game: Game, x: number, y: number, width: number, key: string | null = 'wall', height: number = 0) {
     super(game, x, y, key);
-    this.scale.x = this.scale.y = width / this.width;
+    if (key) {
+      this.scale.x = this.scale.y = width / this.width;
+    } else {
+      this.width = width;
+      this.height = height;
+    }
 
     this.game.physics.arcade.enable([this]);
     this.body.collideWorldBounds = true;

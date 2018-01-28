@@ -27,6 +27,8 @@ function measureHeight(game: Game, type: TMapElement['type'], width: number) {
 
 export default class Main extends Phaser.State {
   public game: Game;
+  private bgm: Phaser.Sound;
+  private gamepad: Phaser.Group;
   private flame: Flame;
   private bg: Phaser.Sprite;
   private torches: Torch[] = [];
@@ -42,6 +44,12 @@ export default class Main extends Phaser.State {
     this.game = game;
   }
 
+  public init() {
+    this.bgm = this.game.add.audio('bgm');
+    this.bgm.fadeIn(2000);
+    this.bgm.fadeOut(2000);
+  }
+
   public create() {
     console.log('main');
     this.bg = this.add.sprite(0, 0, 'bg');
@@ -51,7 +59,7 @@ export default class Main extends Phaser.State {
 
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
     this.cursors = this.game.input.keyboard.createCursorKeys();
-
+    
     this.cameraMask = this.game.add.sprite(0, 0, 'camera-mask');
     this.cameraMask.anchor.setTo(.5, .5);
     this.cameraMask.scale.x = this.cameraMask.scale.y = 900 / this.cameraMask.width;
@@ -76,11 +84,17 @@ export default class Main extends Phaser.State {
       //   100
       // )));
     // }
-    
-    setting.mapElements.forEach(({type, x: sx, y: sy, width, xNum, yNum, key}) => {
+
+    this.torches = [];
+    this.waters = [];
+    this.walls = [];
+
+    setting.mapElements.forEach(({type, x: sx, y: sy, width, xNum, yNum, key, height}) => {
       xNum = xNum || 1;
       yNum = yNum || 1;
-      const height = measureHeight(this.game, type, width);
+      if (!height) {
+        height = measureHeight(this.game, type, width);
+      }
 
       for (let j = 0; j < yNum; j += 1) {
         const y = sy + j * height;
@@ -96,7 +110,7 @@ export default class Main extends Phaser.State {
               break;
             }
             case 'wall': {
-              this.walls.push(this.game.add.existing(new Wall(this.game, x, y, width, key)));
+              this.walls.push(this.game.add.existing(new Wall(this.game, x, y, width, key, height || 0)));
               break;
             }
             default:
@@ -126,6 +140,62 @@ export default class Main extends Phaser.State {
     this.worldMask.endFill();
     this.world.mask = this.worldMask;
     // this.world.mask = this.worldFlameMask;
+
+    const {moveAcceleration} = this.game.setting.flame;
+    const body = this.flame.body as Phaser.Physics.Arcade.Body;
+
+    this.gamepad = new Phaser.Group(this.game);
+    this.game.stage.addChild(this.gamepad);
+    // down
+    this.add.button(
+      90, 200,
+      'gamepad',
+      () => {
+        body.acceleration.y = moveAcceleration;
+      },
+      this,
+      'on4', 'on4', 'off4', 'on4',
+      this.gamepad
+    );
+    // up
+    this.add.button(
+      90, 0,
+      'gamepad',
+      () => {
+        body.acceleration.y = -moveAcceleration;
+      },
+      this,
+      'on2', 'on2', 'off2', 'on2',
+      this.gamepad
+    );
+    // right
+    this.add.button(
+      200, 90,
+      'gamepad',
+      () => {
+        body.acceleration.x = moveAcceleration;
+      },
+      this,
+      'on1', 'on1', 'off1', 'on1',
+      this.gamepad
+    );
+    // left
+    this.add.button(
+      0, 90,
+      'gamepad',
+      () => {
+        body.acceleration.x = -moveAcceleration;
+      },
+      this,
+      'on3', 'on3', 'off3', 'on3',
+      this.gamepad
+    );
+
+    this.gamepad.scale.x = this.gamepad.scale.y = this.game.width / 2 / this.gamepad.width;
+    this.gamepad.x = (this.game.width - this.gamepad.width) / 2;
+    this.gamepad.y = this.game.height - this.gamepad.height;
+
+    this.bgm.play();
   }
 
   public update() {
@@ -207,7 +277,9 @@ export default class Main extends Phaser.State {
   }
 
   public shutdown() {
+    this.bgm.stop();
     this.flame.kill();
+    this.gamepad.destroy();
     this.torches.forEach(torch => {
       torch.kill();
     });

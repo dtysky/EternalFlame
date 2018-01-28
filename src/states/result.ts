@@ -18,6 +18,10 @@ export default class Result extends Phaser.State {
     this.game = game;
   }
 
+  public init() {
+    
+  }
+
   public create() {
     console.log('result');
     this.bg = this.game.add.sprite(0, 0, 'result');

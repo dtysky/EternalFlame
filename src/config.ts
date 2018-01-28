@@ -14,7 +14,7 @@ const devMode = env === 'development';
 export default {
   env,
   devMode,
-  assetsBasePath: '/assets/',
+  assetsBasePath: devMode ? '/assets/' : 'http://oekm6wrcq.bkt.clouddn.com/eternal-flame/assets/',
   width: 540,
   height: 960
 };
@@ -33,7 +33,9 @@ export const resources: TResources = {
     {type: 'image', key: 'torch', url: 'torch.png'},
     {type: 'image', key: 'cross', url: 'cross.png'},
     {type: 'atlas', key: 'water', url: 'water.png', tUrl: 'water.json'},
+    {type: 'atlas', key: 'gamepad', url: 'gamepad.png', tUrl: 'gamepad.json'},
     {type: 'image', key: 'wall', url: 'wall.png'},
-    {type: 'atlas', key: 'torch-flame', url: 'torch-flame.png', tUrl: 'torch-flame.json'}
+    {type: 'atlas', key: 'torch-flame', url: 'torch-flame.png', tUrl: 'torch-flame.json'},
+    {type: 'audio', key: 'bgm', url: 'bgm.mp3'}
   ]
 };
