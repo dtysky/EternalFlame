@@ -1,8 +1,11 @@
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const phaserModule = path.join(__dirname, '../node_modules/phaser-ce/');
+const outPath = path.resolve(__dirname, './dist');
+const phaserModule = path.join(__dirname, './node_modules/phaser-ce/');
 const phaser = path.join(phaserModule, 'build/custom/phaser-split.js');
 const pixi = path.join(phaserModule, 'build/custom/pixi.js');
 const p2 = path.join(phaserModule, 'build/custom/p2.js');
@@ -110,11 +113,21 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.ProvidePlugin({}),
+    new CleanWebpackPlugin(
+      ['*'],
+      {root: outPath}
+    ),
+    new CopyWebpackPlugin([
+      {from: './assets', to: path.join(outPath, './assets')}
+    ]),
+    new webpack.DefinePlugin({
+      'globalEnv': {
+        NODE_ENV: JSON.stringify('production'),
+      }
+    }),
     new webpack.optimize.CommonsChunkPlugin({name: 'vendor', filename: 'vendor.js'}),
     new HtmlWebpackPlugin({
-      template: './index.html'
+      template: './index-pd.html'
     })
   ]
 };

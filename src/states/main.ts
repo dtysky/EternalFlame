@@ -56,13 +56,13 @@ export default class Main extends Phaser.State {
     this.cameraMask.anchor.setTo(.5, .5);
     this.cameraMask.scale.x = this.cameraMask.scale.y = 900 / this.cameraMask.width;
 
-    for (let i = 0; i < 50; i++) {
-      this.torches.push(this.game.add.existing(new Torch(
-        this.game,
-        this.game.world.randomX,
-        this.game.world.randomY,
-        100
-      )));
+    // for (let i = 0; i < 50; i++) {
+      // this.torches.push(this.game.add.existing(new Torch(
+      //   this.game,
+      //   this.game.world.randomX,
+      //   this.game.world.randomY,
+      //   100
+      // )));
       // this.waters.push(this.game.add.existing(new Water(
       //   this.game,
       //   this.game.world.randomX,
@@ -75,7 +75,7 @@ export default class Main extends Phaser.State {
       //   this.game.world.randomY,
       //   100
       // )));
-    }
+    // }
     
     setting.mapElements.forEach(({type, x: sx, y: sy, width, xNum, yNum, key}) => {
       xNum = xNum || 1;
@@ -107,8 +107,8 @@ export default class Main extends Phaser.State {
     });
 
     this.flame = new Flame(this.game);
-    this.flame.x = 400;
-    this.flame.y = 6000;
+    this.flame.x = setting.flame.initPosition.x;
+    this.flame.y = setting.flame.initPosition.y;
 
     this.game.add.existing(this.flame);
     this.camera.follow(this.flame, Phaser.Camera.FOLLOW_LOCKON, 1, 1);
@@ -156,9 +156,9 @@ export default class Main extends Phaser.State {
       body.acceleration.x = -moveAcceleration;
     }
 
-    if (body.velocity.y > -minVelocity.y) {
-      body.velocity.y = -minVelocity.y;
-    }
+    // if (body.velocity.y > -minVelocity.y) {
+    //   body.velocity.y = -minVelocity.y;
+    // }
 
     this.worldMask
       .clear()

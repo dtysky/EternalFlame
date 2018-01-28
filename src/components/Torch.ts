@@ -12,15 +12,23 @@ export default class Torch extends Phaser.Sprite {
   public game: Game;
   public state: 'die' | 'alive';
   private flame: Phaser.Sprite;
+  private flameType: string;
 
   constructor(game: Game, x: number, y: number, width: number, key: string = 'torch') {
     super(game, x, y, key);
     this.state = 'die';
+    this.flameType = key;
 
     this.flame = new Phaser.Sprite(this.game, 0, 0, 'torch-flame');
-    this.flame.scale.x = 1.5;
-    this.flame.scale.y = 2;
-    this.flame.position.setTo(0, -220);
+    if (key === 'torch') {
+      this.flame.scale.x = 1.5;
+      this.flame.scale.y = 2;
+      this.flame.position.setTo(0, -220);
+    } else {
+      this.flame.scale.x = 1.8;
+      this.flame.scale.y = 2.2;
+      this.flame.position.setTo(0, -240);
+    }
     this.flame.visible = false;
     this.addChild(this.flame);
     this.flame.animations.add('fire', ['1', '2', '3', '4', '5', '6'], 6, true);
@@ -40,14 +48,22 @@ export default class Torch extends Phaser.Sprite {
   }
 
   public onFire = (self: Torch, target: Flame) => {
+    target.enhance();
+
     if (this.state === 'die') {
       config.devMode && console.log('torch');
       this.state = 'alive';
-      target.enhance();
       this.game.records.fire += 1;
       this.flame.animations.play('fire');
       this.flame.visible = true;
-      this.body.onOverlap.remove(this.onFire);
+      // this.body.onOverlap.remove(this.onFire);
+
+      if (this.flameType === 'cross') {
+        setTimeout(
+          () => this.game.state.start('result'),
+          1000
+        );
+      }
     }
   }
 }

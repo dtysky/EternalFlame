@@ -31,7 +31,9 @@ export const resources: TResources = {
     {type: 'image', key: 'camera-mask', url: 'camera-mask.png'},
     {type: 'image', key: 'bg', url: 'bg.jpg'},
     {type: 'image', key: 'torch', url: 'torch.png'},
+    {type: 'image', key: 'cross', url: 'cross.png'},
     {type: 'atlas', key: 'water', url: 'water.png', tUrl: 'water.json'},
+    {type: 'image', key: 'wall', url: 'wall.png'},
     {type: 'atlas', key: 'torch-flame', url: 'torch-flame.png', tUrl: 'torch-flame.json'}
   ]
 };

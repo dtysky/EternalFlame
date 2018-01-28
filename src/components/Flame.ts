@@ -72,7 +72,7 @@ export default class Flame extends Phaser.Sprite {
         () => {
           this.invincible = false;
         },
-        1000
+        1500
       );
     }
   }
