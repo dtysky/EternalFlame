@@ -53,7 +53,7 @@ export default class Game extends Phaser.Game {
         {type: 'wall' , x: 0, y: 3960, width: 4096, height: 120, key: null},
 
         {type: 'torch', x: 700, y: 300, width: 120, key: 'cross'},
-        {type: 'torch', x: 3500, y: 300, width: 120, key: 'cross'},
+        {type: 'torch', x: 3400, y: 300, width: 120, key: 'cross'},
         {type: 'torch', x: 3400, y: 3800, width: 120, key: 'cross'},
 
         {type: 'torch', x: 100, y: 600, width: 120},
