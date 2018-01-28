@@ -6,14 +6,15 @@
 import * as Phaser from 'phaser-ce';
 import Game from '../Game';
 import Flame from './Flame';
+import config from '../config';
 
 export default class Torch extends Phaser.Sprite {
   public game: Game;
   public state: 'die' | 'alive';
   private flame: Phaser.Sprite;
 
-  constructor(game: Game, x: number, y: number, width: number) {
-    super(game, x, y, 'torch');
+  constructor(game: Game, x: number, y: number, width: number, key: string = 'torch') {
+    super(game, x, y, key);
     this.state = 'die';
 
     this.flame = new Phaser.Sprite(this.game, 0, 0, 'torch-flame');
@@ -40,6 +41,7 @@ export default class Torch extends Phaser.Sprite {
 
   public onFire = (self: Torch, target: Flame) => {
     if (this.state === 'die') {
+      config.devMode && console.log('torch');
       this.state = 'alive';
       target.enhance();
       this.game.records.fire += 1;
@@ -47,6 +49,5 @@ export default class Torch extends Phaser.Sprite {
       this.flame.visible = true;
       this.body.onOverlap.remove(this.onFire);
     }
-    console.log('haha', self, target);
   }
 }

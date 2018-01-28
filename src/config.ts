@@ -25,7 +25,9 @@ export const resources: TResources = {
     {type: 'atlas', key: 'ui', url: 'ui.png', tUrl: 'ui.json'}
   ],
   main: [
-    {type: 'image', key: 'title-bg', url: 'title-bg.png'},
+    {type: 'image', key: 'title-bg', url: 'title-bg.jpg'},
+    {type: 'image', key: 'result', url: 'result.png'},
+    {type: 'bitmapFont', key: 'font', url: 'font.png', tUrl: 'font.xml'},
     {type: 'image', key: 'camera-mask', url: 'camera-mask.png'},
     {type: 'image', key: 'bg', url: 'bg.jpg'},
     {type: 'image', key: 'torch', url: 'torch.png'},

@@ -6,12 +6,13 @@
 import * as Phaser from 'phaser-ce';
 import Game from '../Game';
 import Flame from './Flame';
+import config from '../config';
 
 export default class Wall extends Phaser.Sprite {
   public game: Game;
 
-  constructor(game: Game, x: number, y: number, width: number) {
-    super(game, x, y, 'wall');
+  constructor(game: Game, x: number, y: number, width: number, key: string = 'wall') {
+    super(game, x, y, key);
     this.scale.x = this.scale.y = width / this.width;
 
     this.game.physics.arcade.enable([this]);
@@ -26,6 +27,6 @@ export default class Wall extends Phaser.Sprite {
 
   public onFire = (self: Wall, target: Flame) => {
     // target.weak(50);
-    console.log('wall');
+    config.devMode && console.log('wall');
   }
 }

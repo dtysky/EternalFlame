@@ -6,12 +6,13 @@
 import * as Phaser from 'phaser-ce';
 import Game from '../Game';
 import Flame from './Flame';
+import config from '../config';
 
 export default class Water extends Phaser.Sprite {
   public game: Game;
 
-  constructor(game: Game, x: number, y: number, width: number) {
-    super(game, x, y, 'water');
+  constructor(game: Game, x: number, y: number, width: number, key: string = 'water') {
+    super(game, x, y, key);
     this.scale.x = this.scale.y = width / this.width;
 
     this.animations.add('flow', ['1', '2', '3', '4', '5', '6'], 6, true);
@@ -28,6 +29,6 @@ export default class Water extends Phaser.Sprite {
 
   public onFire = (self: Water, target: Flame) => {
     target.weak(50);
-    console.log('water');
+    config.devMode && console.log('water');
   }
 }

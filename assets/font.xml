@@ -1,0 +1,23 @@
+<font>
+	<info face="font" size="156" />
+	<common lineHeight="156" scaleW="344" scaleH="441" pages="1" />
+	<pages>
+		<page id="0" file="/asstes/font.png" />
+	</pages>
+	<chars count="12">
+		<char id="48" x="97" y="147" width="96" height="146" xoffset="0" yoffset="10" xadvance="97" /><!-- 0 -->
+		<char id="49" x="285" y="147" width="58" height="146" xoffset="0" yoffset="10" xadvance="59" /><!-- 1 -->
+		<char id="50" x="97" y="0" width="96" height="146" xoffset="0" yoffset="10" xadvance="97" /><!-- 2 -->
+		<char id="51" x="194" y="147" width="90" height="146" xoffset="0" yoffset="10" xadvance="91" /><!-- 3 -->
+		<char id="52" x="97" y="294" width="96" height="146" xoffset="0" yoffset="10" xadvance="97" /><!-- 4 -->
+		<char id="53" x="194" y="294" width="90" height="146" xoffset="0" yoffset="10" xadvance="91" /><!-- 5 -->
+		<char id="54" x="194" y="0" width="96" height="146" xoffset="0" yoffset="10" xadvance="97" /><!-- 6 -->
+		<char id="55" x="0" y="294" width="96" height="146" xoffset="0" yoffset="10" xadvance="97" /><!-- 7 -->
+		<char id="56" x="0" y="147" width="96" height="146" xoffset="0" yoffset="10" xadvance="97" /><!-- 8 -->
+		<char id="57" x="0" y="0" width="96" height="146" xoffset="0" yoffset="10" xadvance="97" /><!-- 9 -->
+		<char id="32" x="0" y="0" width="0" height="0" xoffset="0" yoffset="0" xadvance="40" /><!--   -->
+		<char id="9" x="0" y="0" width="0" height="0" xoffset="0" yoffset="0" xadvance="320" /><!-- 	 -->
+	</chars>
+	<kernings count="0">
+	</kernings>
+</font>

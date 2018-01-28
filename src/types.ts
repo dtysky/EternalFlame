@@ -7,7 +7,7 @@ export type TResource = {
   key: string,
   url?: any,
   tUrl?: any,
-  type: 'atlas' | 'image' | 'pack' | 'audio'
+  type: 'atlas' | 'image' | 'pack' | 'audio' | 'bitmapFont'
 };
 
 export type TResources = {
@@ -28,7 +28,8 @@ export type TMapElement = {
   y: number,
   width: number,
   xNum?: number,
-  yNum?: number
+  yNum?: number,
+  key?: string
 };
 
 export type TGameSetting = {
@@ -38,10 +39,19 @@ export type TGameSetting = {
       x: number,
       y: number
     },
+    minVelocity: {
+      x: number,
+      y: number
+    },
     initAcceleration: {
       x: number,
       y: number
-    }
+    },
+    initPosition: {
+      x: number,
+      y: number
+    },
+    moveAcceleration: number
   },
   world: {
     worldWidth: number,

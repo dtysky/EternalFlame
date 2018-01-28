@@ -5,6 +5,7 @@
  */
 import * as Phaser from 'phaser-ce';
 import Game from '../Game';
+import config from '../config';
 
 export default class Flame extends Phaser.Sprite {
   public game: Game;
@@ -39,7 +40,7 @@ export default class Flame extends Phaser.Sprite {
   }
 
   public enhance() {
-    console.log('enhance');
+    config.devMode && console.log('enhance');
     this.life = 100;
     this.scale.x = this.scale.y = this.originScale;
 

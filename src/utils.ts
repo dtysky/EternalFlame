@@ -21,6 +21,9 @@ export function loadAssets(game: Game, resources: TResource[]) {
       case 'audio':
         game.load.audio(key, url);
         break;
+      case 'bitmapFont':
+        game.load.bitmapFont(key, url, tUrl);
+        break;
       default:
         break;
     }

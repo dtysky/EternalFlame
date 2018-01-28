@@ -28,10 +28,19 @@ export default class Game extends Phaser.Game {
           x: 100,
           y: 100
         },
+        minVelocity: {
+          x: 0,
+          y: 30
+        },
         initAcceleration: {
           x: 0,
           y: 100
-        }
+        },
+        initPosition: {
+          x: 0,
+          y: 0
+        },
+        moveAcceleration: 100,
       },
       world: {
         worldWidth: 1200,
