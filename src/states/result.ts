@@ -48,9 +48,9 @@ export default class Result extends Phaser.State {
     this.button.position.setTo(0, this.game.height - this.button.height);
 
     if (this.game.records.result === 'die') {
-      alert('You dead !')
+      alert('You dead !');
     } else {
-      alert('Well, you are the next lord...')
+      alert('Well, you are the next lord...');
     }
   }
 
