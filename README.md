@@ -1,6 +1,6 @@
 # ETERNAL FLAME
 
-![cover](/dtysky/EternalFlame/raw/master/cover.jpg)
+![cover](/cover.jpg)
 
 Bring the flame to the end of word !  
 
